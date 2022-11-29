@@ -6,7 +6,7 @@ authors = ["yhattm <yhattm@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3"
 boto3 = "^1.26.17"
 configparser = "^5.3.0"
 
