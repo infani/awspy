@@ -5,3 +5,4 @@ def version():
     config.read("pyproject.toml")
     version = config['tool.poetry']['version']
     print(version)
+    return version
