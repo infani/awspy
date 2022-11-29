@@ -1,3 +1,7 @@
+import configparser
 
 def version():
-    print("version")
+    config = configparser.ConfigParser()
+    config.read("pyproject.toml")
+    version = config['tool.poetry']['version']
+    print(version)
