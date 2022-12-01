@@ -13,4 +13,6 @@ class Auth:
                 'USERNAME': username,
                 'PASSWORD': password},
             ClientId=self.clientId)
-        print(res)
+        accessToken = res['AuthenticationResult']['AccessToken']
+        # print(accessToken)
+        return accessToken
