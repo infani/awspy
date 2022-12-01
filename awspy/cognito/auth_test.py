@@ -6,6 +6,7 @@ def test_Auth_WrongClientID():
     password = 'password'
     try:
         auth = Auth(clientID)
-        auth.login(username, password)
+        accessToken = auth.login(username, password)
+        print(accessToken)
     except Exception as e:
         assert str(e) == 'An error occurred (ResourceNotFoundException) when calling the InitiateAuth operation: User pool client WrongClientID does not exist.'
