@@ -1,4 +1,6 @@
 import boto3
+import requests
+# from jose import jwt
 
 
 class Auth:
@@ -16,3 +18,9 @@ class Auth:
         accessToken = res['AuthenticationResult']['AccessToken']
         # print(accessToken)
         return accessToken
+
+def DecodeJWT(region: str, userPoolID: str, token: str):
+    jwks_url = f'https://cognito-idp.{region}.amazonaws.com/{userPoolID}/.well-known/jwks.json'
+    jwks = requests.get(jwks_url).json()
+    print(jwks)
+    return jwks

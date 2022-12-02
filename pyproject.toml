@@ -6,9 +6,11 @@ authors = ["yhattm <yhattm@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3"
+python = "^3.7"
 boto3 = "^1.26.17"
 configparser = "^5.3.0"
+python-jose = "^3.3.0"
+requests = "^2.28.1"
 
 
 [tool.poetry.group.dev.dependencies]
