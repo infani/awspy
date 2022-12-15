@@ -6,7 +6,13 @@
 	"features": {
 		"ghcr.io/devcontainers/features/aws-cli:1": {},
 		"ghcr.io/devcontainers-contrib/features/poetry:1": {}
-	}
+	},
+	"runArgs": [
+		"-v",
+		"${env:HOME}${env:USERPROFILE}/.aws:/home/vscode/.aws:rw",
+		"-e",
+		"AWS_PROFILE=vsaas-sandbox"
+	]
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},

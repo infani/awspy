@@ -1,9 +1,29 @@
-
+from awspy import cloudmap
 import os
+
+
+def getConfig(service: str):
+    res = cloudmap.discover_instances('vsaas', service)
+    return res['Instances'][0]['Attributes']
+
 
 class Config:
     region = os.getenv("AWS_DEFAULT_REGION", "ap-northeast-1")
-    cognitoUserPoolID = os.getenv("cognitoUserPoolID", "")
-    cognitoClientID = os.getenv("cognitoClientID", "")
     username = os.getenv("username", "")
     password = os.getenv("password", "")
+
+    cognitoUserPoolID = os.getenv("cognitoUserPoolID", "")
+    cognitoClientID = os.getenv("cognitoClientID", "")
+    vortexaiConfig = getConfig('vortexai')
+    if "cognitoUserPoolID" in vortexaiConfig:
+        cognitoUserPoolID = vortexaiConfig["cognitoUserPoolID"]
+    if "cognitoClientID" in vortexaiConfig:
+        cognitoClientID = vortexaiConfig["cognitoClientID"]
+
+    amplifyDBConfig = getConfig('amplify')
+    appsyncID = ''
+    if "appsyncID" in amplifyDBConfig:
+        appsyncID = amplifyDBConfig["appsyncID"]
+
+
+config = Config()
