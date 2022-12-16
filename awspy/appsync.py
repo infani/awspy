@@ -38,3 +38,9 @@ class appsync:
             data=data.encode('utf8')
         )
         return res
+
+def init(endpoint: str, apiId: str):
+    global cli
+    cli = appsync(endpoint, apiId)
+
+global cli
