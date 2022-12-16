@@ -8,7 +8,7 @@ def getConfig(service: str):
 
 
 class Config:
-    region = os.getenv("AWS_DEFAULT_REGION", "ap-northeast-1")
+    region = os.getenv("AWS_REGION", "ap-northeast-1")
     username = os.getenv("username", "")
     password = os.getenv("password", "")
 
@@ -22,8 +22,11 @@ class Config:
 
     amplifyDBConfig = getConfig('amplify')
     appsyncID = ''
+    appsyncUrl=""
     if "appsyncID" in amplifyDBConfig:
         appsyncID = amplifyDBConfig["appsyncID"]
+    if "appsyncUrl" in amplifyDBConfig:
+        appsyncUrl = amplifyDBConfig["appsyncUrl"]
 
 
 config = Config()
