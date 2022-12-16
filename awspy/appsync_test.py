@@ -21,4 +21,5 @@ query GetUser($id: ID!) {
         "id": "5cde17ba-cf87-4e09-9946-9cc85d617381"
     }
     res = cli.query(query, vars)
-    assert res['data']['getUser']['id'] == "5cde17ba-cf87-4e09-9946-9cc85d617381"
+    assert res.ok == True
+    assert res.json()['data']['getUser']['id'] == "5cde17ba-cf87-4e09-9946-9cc85d617381"

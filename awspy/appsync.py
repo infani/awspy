@@ -37,4 +37,4 @@ class appsync:
             headers=self.headers,
             data=data.encode('utf8')
         )
-        return res.json()
+        return res
