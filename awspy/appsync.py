@@ -11,5 +11,5 @@ def getApiKey(apiId: str):
         expiredTime = datetime.fromtimestamp(key['expires'])
         now = datetime.now()
         if now < expiredTime:
-            return key['id']
+            return str(key['id'])
     raise Exception('appsync key is not found')
