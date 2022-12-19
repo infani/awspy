@@ -6,9 +6,12 @@ class dynamodb:
         dynamodb = boto3.resource('dynamodb')
         self.table = dynamodb.Table(tableName)
 
-
     def getItem(self, key):
-        res = self.table.get_item(
-            Key=key
-        )
-        return res['Item']
+        try:
+            res = self.table.get_item(
+                Key=key
+            )
+            return res['Item']
+        except KeyError as e:
+            print(e)
+            return {}
