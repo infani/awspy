@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 
 
 class dynamodb:
@@ -14,4 +15,6 @@ class dynamodb:
             return res['Item']
         except KeyError as e:
             print(e)
-            return {}
+        except ClientError as e:
+            print(e)
+        return {}
