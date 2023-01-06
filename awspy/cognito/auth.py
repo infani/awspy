@@ -4,9 +4,10 @@ from jose import jwt
 
 class Auth:
     def __init__(self, region: str, userPoolID: str, clientId: str) -> None:
-        self.region = region
-        self.userPoolID = userPoolID
         self.clientId = clientId
+        jwks_url = f'https://cognito-idp.{region}.amazonaws.com/{userPoolID}/.well-known/jwks.json'
+        self.jwks = requests.get(jwks_url).json()
+        # print(self.jwks)
 
     def login(self, username: str, password: str):
         cli = boto3.client('cognito-idp')
@@ -21,8 +22,5 @@ class Auth:
         return accessToken
 
     def decodeJWT(self, token: str):
-        jwks_url = f'https://cognito-idp.{self.region}.amazonaws.com/{self.userPoolID}/.well-known/jwks.json'
-        jwks = requests.get(jwks_url).json()
-        # print(jwks)
-        res = jwt.decode(token, jwks)
+        res = jwt.decode(token, self.jwks)
         return res['sub']

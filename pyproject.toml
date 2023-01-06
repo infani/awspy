@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "awspy"
-version = "5.12.27"
+version = "6.1.6"
 description = ""
 authors = ["yhattm <yhattm@gmail.com>"]
 readme = "README.md"
