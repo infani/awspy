@@ -4,7 +4,7 @@ import json
 def test_shadow():
     thingName = 'test_updateShadow'
     shadowName = 'feedback'
-    feebackShadow = iot.shadow(thingName, shadowName)
+    feedbackShadow = iot.shadow(thingName, shadowName)
     payload = {
         "state": {
             "desired": {
@@ -12,6 +12,6 @@ def test_shadow():
             }
         }
     }
-    feebackShadow.set(json.dumps(payload))
-    res = feebackShadow.get()
+    feedbackShadow.set(json.dumps(payload))
+    res = feedbackShadow.get()
     assert res['state']['desired']['test'] == 'test'
