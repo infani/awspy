@@ -1,15 +1,17 @@
 from awspy import iot
 import json
 
-def test_updateShadow():
+def test_shadow():
+    thingName = 'test_updateShadow'
+    shadowName = 'feedback'
+    feebackShadow = iot.shadow(thingName, shadowName)
     payload = {
         "state": {
             "desired": {
-                "welcome": "aws-iot"
-            },
-            "reported": {
-                "welcome": "aws-iot"
+                "test": "test"
             }
         }
     }
-    iot.updateShadow('test_updateShadow', 'feedback', json.dumps(payload))
+    feebackShadow.set(json.dumps(payload))
+    res = feebackShadow.get()
+    assert res['state']['desired']['test'] == 'test'
